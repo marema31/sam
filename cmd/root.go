@@ -63,6 +63,7 @@ func initConfig() {
 			os.Exit(1)
 		}
 
+		viper.SetDefault("SAMPATH", "~/.sam")
 		// Search config in home directory with name ".sam" (without extension).
 		viper.AddConfigPath(home)
 		viper.SetConfigName(".sam")

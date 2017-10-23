@@ -3,6 +3,7 @@ package project
 import (
 	"fmt"
 
+	"github.com/marema31/sam/manage"
 	"github.com/spf13/cobra"
 )
 
@@ -21,6 +22,12 @@ func newProjectListCommand() *cobra.Command {
 }
 
 func ListProject() error {
-	fmt.Println("ls called for projects")
+	projects, err := manage.ListProjects()
+	if err != nil {
+		return err
+	}
+	for _, project := range projects {
+		fmt.Println("    ", project)
+	}
 	return nil
 }

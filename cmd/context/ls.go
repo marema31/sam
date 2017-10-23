@@ -3,6 +3,7 @@ package context
 import (
 	"fmt"
 
+	"github.com/marema31/sam/manage"
 	"github.com/spf13/cobra"
 )
 
@@ -20,7 +21,14 @@ func newContextListCommand() *cobra.Command {
 	return cmd
 }
 
-func ListContext(projectName string) error {
-	fmt.Println("ls called for context for project:", projectName)
+func ListContext(project string) error {
+	fmt.Println("ls called for context for project:", project)
+	contexts, err := manage.ListContexts(project)
+	if err != nil {
+		return err
+	}
+	for _, contexts := range contexts {
+		fmt.Println("    ", contexts)
+	}
 	return nil
 }

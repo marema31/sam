@@ -3,6 +3,7 @@ package project
 import (
 	"fmt"
 
+	"github.com/marema31/sam/manage"
 	"github.com/spf13/cobra"
 )
 
@@ -20,7 +21,10 @@ func newProjectCreateCommand() *cobra.Command {
 	return cmd
 }
 
-func CreateProject(projectName string) error {
-	fmt.Println("create called for project:", projectName)
-	return nil
+func CreateProject(project string) error {
+	err := manage.CreateProject(project)
+	if err == nil {
+		fmt.Println("Project", project, "created !")
+	}
+	return err
 }

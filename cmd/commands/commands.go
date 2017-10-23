@@ -13,6 +13,7 @@ func AddCommands(cmd *cobra.Command) {
 		option.NewOptionCommand(),
 		project.NewProjectCommand(),
 		newActivateCommand(),
+		newInitCommand(),
 		newLoadCommand(),
 		newPsCommand(),
 		newStartCommand(),
