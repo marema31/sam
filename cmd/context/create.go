@@ -3,6 +3,7 @@ package context
 import (
 	"fmt"
 
+	"github.com/marema31/sam/manage"
 	"github.com/spf13/cobra"
 )
 
@@ -20,7 +21,10 @@ func newContextCreateCommand() *cobra.Command {
 	return cmd
 }
 
-func CreateContext(projectName string, contextName string) error {
-	fmt.Println("create called for context:", contextName, "in project:", projectName)
-	return nil
+func CreateContext(project string, context string) error {
+	err := manage.CreateContext(project, context)
+	if err == nil {
+		fmt.Println("Context", context, "of project", project, "created !")
+	}
+	return err
 }
